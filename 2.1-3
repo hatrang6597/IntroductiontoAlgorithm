@@ -1,0 +1,15 @@
+''' Input: Two nn bit binary integers stored in two nn element array of binary digits (either 0 or 1) A and B. 
+Output: A (n + 1)(n+1) bit binary integer stored in (n + 1) element array of binary digits (either 0 or 1) C = A + B '''
+
+
+def cal(A, B) :
+    C = []
+    n = max(len(A), len(B))
+    carry = 0
+    for i in range(n-1, -1, -1): 
+        x = (A[i] + B[i] + carry) % 2 
+        C.append(x)
+        carry = (A[i] + B[i]+ carry) // 2
+    C.append(carry)
+    return list(reversed(C))
+print(cal([1,0,1,1,0,1,0], [0,1,1,1,0,1,1]))
