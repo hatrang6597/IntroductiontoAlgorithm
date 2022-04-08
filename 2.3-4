@@ -1,0 +1,23 @@
+''' In order to sort A[1..n], we recursively sort A[1..n-1] and then insert A[n] into the sorted array A[1..n-1]'''
+
+# There are two steps in this recursive sorting algorithm:
+# Sort the sub-array A[1..n-1]A[1..n−1]
+# Insert A[n]A[n] into the sorted sub-array from step 1 in proper position
+# For n > 1n>1, step 1 again calls for the recursion for n - 1n−1 and step 2 runs in \Theta(n)Θ(n) time
+
+# INSERT (A, k) 
+key = A[k]
+index = k - 1
+while index > 0 and A[index] > key: 
+    A[index + 1] = A[index] 
+    index = index - 1 
+A[index + 1] = key
+
+# RECURSE - INSERTION - SORT (A,n)
+if n > 1: 
+    RECURSE - INSERTION - SORT (a, n-1) 
+    INSERT (A, n) 
+  
+# In worst case, when array is decreasing: all the n elements has to be shifted => O(n) operations.
+# this shifting has to be done for all of the n elements one by one while recursing. 
+# Which makes the complete algorithm run at n . O(n) = O(n^2) 
